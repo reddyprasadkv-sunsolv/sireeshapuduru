@@ -246,6 +246,15 @@ class ModalManager {
           </select>
         </div>
 
+        <!-- Sacred Security Challenge (CAPTCHA) -->
+        <div class="captcha-container" id="bookingCaptcha">
+          <div class="captcha-header">
+            <span class="captcha-badge" id="bookingCaptchaBadge">🌿 Security Check: 5 + 2 = ?</span>
+            <button type="button" class="captcha-refresh-btn" onclick="window.initCaptcha('bookingCaptcha', 'bookingCaptchaBadge')" title="Generate new challenge">🔄</button>
+          </div>
+          <input type="number" name="captchaAnswer" class="form-control" placeholder="Enter calculated number answer" required style="padding: 8px 12px; font-size: 0.95rem;">
+        </div>
+
         <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
           Confirm Free Discovery Call ✨
         </button>
@@ -258,13 +267,31 @@ class ModalManager {
     `);
 
     this.open(html);
+    setTimeout(() => {
+      if (window.initCaptcha) window.initCaptcha('bookingCaptcha', 'bookingCaptchaBadge');
+    }, 50);
   }
 
   handleBookingSubmit(form) {
     const formData = new FormData(form);
-    const name = formData.get('name');
-    const phone = formData.get('phone');
-    const email = formData.get('email');
+
+    // Verify Captcha
+    const captchaContainer = document.getElementById('bookingCaptcha');
+    if (captchaContainer) {
+      const expected = captchaContainer.dataset.captchaAnswer;
+      const actual = (formData.get('captchaAnswer') || '').trim();
+      if (expected && actual !== expected) {
+        alert('Security check answer is incorrect. Please solve the calculation to confirm your call.');
+        if (window.initCaptcha) window.initCaptcha('bookingCaptcha', 'bookingCaptchaBadge');
+        const input = captchaContainer.querySelector('[name="captchaAnswer"]');
+        if (input) input.focus();
+        return;
+      }
+    }
+
+    const name = (formData.get('name') || '').trim();
+    const phone = (formData.get('phone') || '').trim();
+    const email = (formData.get('email') || '').trim();
     const date = formData.get('bookingDate');
     const time = formData.get('timeSlot');
     const area = formData.get('focusArea');
@@ -332,14 +359,24 @@ class ModalManager {
       </div>
 
       <form onsubmit="event.preventDefault(); window.modalManager.handleGiftDownload(this);">
-        <div style="margin-bottom: 1.25rem;">
+        <div class="form-group" style="margin-bottom: 1.25rem;">
           <label class="form-label">Your Name</label>
           <input type="text" name="name" class="form-control" placeholder="Your Name" required>
         </div>
-        <div style="margin-bottom: 1.5rem;">
+        <div class="form-group" style="margin-bottom: 1.25rem;">
           <label class="form-label">Your WhatsApp / Email to Receive Audio</label>
           <input type="text" name="contact" class="form-control" placeholder="email@domain.com or +91..." required>
         </div>
+
+        <!-- Sacred Security Challenge (CAPTCHA) -->
+        <div class="captcha-container" id="giftCaptcha">
+          <div class="captcha-header">
+            <span class="captcha-badge" id="giftCaptchaBadge">🌿 Security Check: 3 + 4 = ?</span>
+            <button type="button" class="captcha-refresh-btn" onclick="window.initCaptcha('giftCaptcha', 'giftCaptchaBadge')" title="Generate new challenge">🔄</button>
+          </div>
+          <input type="number" name="captchaAnswer" class="form-control" placeholder="Enter calculated number answer" required style="padding: 8px 12px; font-size: 0.95rem;">
+        </div>
+
         <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
           Instant Access & Download MP3 ✨
         </button>
@@ -347,9 +384,28 @@ class ModalManager {
     `;
 
     this.open(html);
+    setTimeout(() => {
+      if (window.initCaptcha) window.initCaptcha('giftCaptcha', 'giftCaptchaBadge');
+    }, 50);
   }
 
   handleGiftDownload(form) {
+    const formData = new FormData(form);
+
+    // Verify Captcha
+    const captchaContainer = document.getElementById('giftCaptcha');
+    if (captchaContainer) {
+      const expected = captchaContainer.dataset.captchaAnswer;
+      const actual = (formData.get('captchaAnswer') || '').trim();
+      if (expected && actual !== expected) {
+        alert('Security check answer is incorrect. Please solve the calculation to access meditation.');
+        if (window.initCaptcha) window.initCaptcha('giftCaptcha', 'giftCaptchaBadge');
+        const input = captchaContainer.querySelector('[name="captchaAnswer"]');
+        if (input) input.focus();
+        return;
+      }
+    }
+
     if (window.sacredSound) window.sacredSound.playBellChime();
     const html = `
       <div style="text-align: center; padding: 2rem 1rem;">

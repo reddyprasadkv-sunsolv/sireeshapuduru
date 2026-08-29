@@ -122,6 +122,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 1000);
   }
 
+  // Global Sacred Captcha Generator Helper
+  window.initCaptcha = function(containerId, badgeId) {
+    const container = document.getElementById(containerId);
+    const badge = document.getElementById(badgeId);
+    if (!container || !badge) return;
+
+    const n1 = Math.floor(Math.random() * 8) + 1;
+    const n2 = Math.floor(Math.random() * 8) + 1;
+    const sum = n1 + n2;
+
+    container.dataset.captchaAnswer = sum.toString();
+    badge.textContent = `🌿 Security Check: What is ${n1} + ${n2} = ?`;
+    const input = container.querySelector('[name="captchaAnswer"]');
+    if (input) input.value = '';
+  };
+
+  // Initialize contact captcha immediately
+  if (document.getElementById('contactCaptcha')) {
+    window.initCaptcha('contactCaptcha', 'contactCaptchaBadge');
+  }
+
   // 6. Contact Form Submission & Direct WhatsApp Message Generator
   const contactForm = document.getElementById('mainContactForm');
   if (contactForm) {
@@ -130,6 +151,20 @@ document.addEventListener('DOMContentLoaded', () => {
       const formData = new FormData(contactForm);
       // Ignore bot spam
       if (formData.get('_hp_check')) return;
+
+      // Verify Captcha
+      const captchaContainer = document.getElementById('contactCaptcha');
+      if (captchaContainer) {
+        const expected = captchaContainer.dataset.captchaAnswer;
+        const actual = (formData.get('captchaAnswer') || '').trim();
+        if (expected && actual !== expected) {
+          alert('Security check answer is incorrect. Please solve the calculation to submit.');
+          window.initCaptcha('contactCaptcha', 'contactCaptchaBadge');
+          const input = captchaContainer.querySelector('[name="captchaAnswer"]');
+          if (input) input.focus();
+          return;
+        }
+      }
 
       const name = (formData.get('name') || '').trim();
       const email = (formData.get('email') || '').trim();

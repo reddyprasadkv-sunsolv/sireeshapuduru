@@ -821,6 +821,15 @@
                 <textarea id="contactMessage" name="message" class="form-control" placeholder="Share your thoughts, challenges, or questions here..." maxlength="2000" required></textarea>
               </div>
 
+              <!-- Sacred Security Challenge (CAPTCHA) -->
+              <div class="captcha-container" id="contactCaptcha">
+                <div class="captcha-header">
+                  <span class="captcha-badge" id="contactCaptchaBadge">🌿 Security Check: 4 + 3 = ?</span>
+                  <button type="button" class="captcha-refresh-btn" onclick="window.initCaptcha('contactCaptcha', 'contactCaptchaBadge')" title="Generate new challenge">🔄</button>
+                </div>
+                <input type="number" name="captchaAnswer" class="form-control" placeholder="Enter calculated number answer" required style="padding: 8px 12px; font-size: 0.95rem;">
+              </div>
+
               <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
                 Send Love & Message ✨
               </button>
