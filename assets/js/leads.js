@@ -90,10 +90,15 @@ class LeadsManager {
       'Status'
     ];
 
-    // Escape CSV cell text
+    // Escape CSV cell text & Neutralize Formula Injection (=, +, -, @)
     const escapeCsv = (val) => {
       if (val === null || val === undefined) return '""';
-      const str = String(val).replace(/"/g, '""');
+      let str = String(val).trim();
+      // Neutralize spreadsheet macro/formula execution
+      if (/^[=+\-@\t\r]/.test(str)) {
+        str = "'" + str;
+      }
+      str = str.replace(/"/g, '""');
       return `"${str}"`;
     };
 

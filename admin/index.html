@@ -543,6 +543,16 @@
         this.renderDashboard();
       }
 
+      escapeHTML(str) {
+        if (str === null || str === undefined) return '';
+        return String(str)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;');
+      }
+
       renderDashboard() {
         const leads = window.leadsManager ? window.leadsManager.getLeads() : [];
 
@@ -589,12 +599,18 @@
           tbody.innerHTML = filtered.map(lead => {
             const isDiscovery = lead.type && lead.type.includes('Discovery');
             const cleanPhone = (lead.phone || '').replace(/[^0-9]/g, '');
-            const whatsappLink = `https://api.whatsapp.com/send?phone=${cleanPhone}&text=${encodeURIComponent(`Hi ${lead.name}, this is Sireesha Puduru regarding your inquiry.`)}`;
+            const safeName = this.escapeHTML(lead.name);
+            const safePhone = this.escapeHTML(lead.phone);
+            const safeEmail = this.escapeHTML(lead.email);
+            const safeDetails = this.escapeHTML(lead.details);
+            const safeTimestamp = this.escapeHTML(lead.timestamp);
+            const safeId = this.escapeHTML(lead.id);
+            const whatsappLink = `https://api.whatsapp.com/send?phone=${cleanPhone}&text=${encodeURIComponent(`Hi ${lead.name || ''}, this is Sireesha Puduru regarding your inquiry.`)}`;
 
             return `
               <tr>
                 <td style="white-space: nowrap; font-size: 0.82rem; color: var(--text-muted);">
-                  ${lead.timestamp}
+                  ${safeTimestamp}
                 </td>
                 <td>
                   <span class="type-badge ${isDiscovery ? 'discovery' : 'message'}">
@@ -602,27 +618,27 @@
                   </span>
                 </td>
                 <td style="font-weight: 600; color: var(--text-primary);">
-                  ${lead.name}
+                  ${safeName}
                 </td>
                 <td style="white-space: nowrap;">
                   ${cleanPhone ? `
-                    <a href="${whatsappLink}" target="_blank" class="whatsapp-btn" title="Open WhatsApp Chat">
-                      💬 ${lead.phone}
+                    <a href="${whatsappLink}" target="_blank" class="whatsapp-btn" title="Open WhatsApp Chat" rel="noopener noreferrer">
+                      💬 ${safePhone}
                     </a>
                   ` : '—'}
                 </td>
                 <td style="white-space: nowrap;">
-                  ${lead.email ? `
-                    <a href="mailto:${lead.email}" style="color: var(--accent-gold); text-decoration: underline;">
-                      ${lead.email}
+                  ${safeEmail ? `
+                    <a href="mailto:${safeEmail}" style="color: var(--accent-gold); text-decoration: underline;">
+                      ${safeEmail}
                     </a>
                   ` : '—'}
                 </td>
                 <td style="max-width: 320px; font-size: 0.88rem; line-height: 1.4;">
-                  ${lead.details || '—'}
+                  ${safeDetails || '—'}
                 </td>
                 <td>
-                  <select class="status-select" onchange="window.adminPortal.updateLeadStatus('${lead.id}', this.value)">
+                  <select class="status-select" onchange="window.adminPortal.updateLeadStatus('${safeId}', this.value)">
                     <option value="New" ${lead.status === 'New' ? 'selected' : ''}>🟡 New</option>
                     <option value="Contacted" ${lead.status === 'Contacted' ? 'selected' : ''}>🟢 Contacted</option>
                     <option value="Session Scheduled" ${lead.status === 'Session Scheduled' ? 'selected' : ''}>✨ Scheduled</option>
@@ -630,7 +646,7 @@
                   </select>
                 </td>
                 <td style="text-align: right;">
-                  <button type="button" class="delete-lead-btn" onclick="window.adminPortal.deleteLead('${lead.id}')" title="Delete record">
+                  <button type="button" class="delete-lead-btn" onclick="window.adminPortal.deleteLead('${safeId}')" title="Delete record">
                     🗑️
                   </button>
                 </td>

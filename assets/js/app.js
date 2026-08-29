@@ -128,10 +128,13 @@ document.addEventListener('DOMContentLoaded', () => {
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
       const formData = new FormData(contactForm);
-      const name = formData.get('name') || '';
-      const email = formData.get('email') || '';
-      const phone = formData.get('phone') || '';
-      const message = formData.get('message') || '';
+      // Ignore bot spam
+      if (formData.get('_hp_check')) return;
+
+      const name = (formData.get('name') || '').trim();
+      const email = (formData.get('email') || '').trim();
+      const phone = (formData.get('phone') || '').trim();
+      const message = (formData.get('message') || '').trim();
 
       if (window.sacredSound) window.sacredSound.playBellChime();
 
