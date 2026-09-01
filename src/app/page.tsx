@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { AmbientCanvas } from '@/components/layout/AmbientCanvas';
 import { Navbar } from '@/components/layout/Navbar';
 import { Hero } from '@/components/sections/Hero';
+import { BreathingOrb } from '@/components/interactive/BreathingOrb';
 import { Philosophy } from '@/components/sections/Philosophy';
 import { Programs } from '@/components/sections/Programs';
 import { EventsSection } from '@/components/events/EventsSection';
@@ -32,6 +33,8 @@ export default function Home() {
       <Navbar onOpenDiscovery={() => handleOpenDiscovery()} />
       
       <Hero onOpenDiscovery={() => handleOpenDiscovery()} />
+      
+      <BreathingOrb />
       
       <Philosophy />
       

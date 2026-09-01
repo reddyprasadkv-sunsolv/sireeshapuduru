@@ -34,7 +34,7 @@ export const EventCard: React.FC<EventCardProps> = ({ event, onRegister, onInqui
     <article className={`event-card ${event.featured ? 'featured-event' : ''} ${!isUpcoming ? 'past-event-card' : ''}`}>
       <div className="event-banner-wrap">
         <img
-          src={event.banner || 'assets/images/workshop-1.png'}
+          src={event.banner || 'assets/images/sanctuary.png'}
           alt={event.title}
           className="event-banner-img"
           loading="lazy"

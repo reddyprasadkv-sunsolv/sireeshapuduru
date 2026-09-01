@@ -49,10 +49,13 @@ export const MirrorWorkDeck: React.FC = () => {
   const shareUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(`✨ Daily Mirror Affirmation from Sireesha Puduru:\n\n"${current.text}"\n\n🌿 Principle: ${current.principle}\n💖 Reflection: ${current.reflection}\n\nExperience The Art of Loving: https://reddyprasadkv-sunsolv.github.io/sireeshapuduru/`)}`;
 
   return (
-    <section className="mirror-work-section" id="mirror-work">
+    <section className="affirmation-section" id="mirror-work">
       <div className="container">
         <div className="section-header text-center">
-          <span className="eyebrow">Interactive Sanctuary Tool</span>
+          <div className="eyebrow">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            Interactive Sanctuary Tool
+          </div>
           <h2 className="section-title">
             Daily Louise Hay <span className="gradient-text">Mirror Work Deck</span>
           </h2>
@@ -62,29 +65,37 @@ export const MirrorWorkDeck: React.FC = () => {
         </div>
 
         <div className="mirror-deck-wrapper">
-          <div
-            className={`affirmation-card ${isFlipped ? 'flipped' : ''}`}
-            onClick={() => setIsFlipped(!isFlipped)}
-            title="Click to flip card"
-          >
-            <div className="card-inner">
+          <div className="mirror-card-container">
+            <div
+              className={`mirror-card ${isFlipped ? 'flipped' : ''}`}
+              onClick={() => setIsFlipped(!isFlipped)}
+              title="Click to flip card"
+            >
               {/* Front Side */}
               <div className="card-face card-front">
-                <span className="card-theme-tag">{current.theme}</span>
-                <div className="mirror-reflection-ring">🪞</div>
-                <h3 className="affirmation-quote-text">"{current.text}"</h3>
-                <span className="card-principle">Principle: {current.principle}</span>
-                <div className="card-tap-hint">Tap card to read reflection ↻</div>
+                <span className="affirmation-category">{current.theme}</span>
+                <div className="mirror-icon">🪞</div>
+                <h3 className="affirmation-text">"{current.text}"</h3>
+                <div style={{ fontSize: '0.88rem', color: 'var(--accent-gold)' }}>
+                  Principle: {current.principle}
+                </div>
+                <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginTop: '12px' }}>
+                  Tap card to read reflection ↻
+                </div>
               </div>
 
               {/* Back Side */}
               <div className="card-face card-back">
-                <span className="card-theme-tag">Somatic Mirror Exercise</span>
-                <p className="reflection-text">{current.reflection}</p>
-                <div className="mirror-mantra-box">
+                <span className="affirmation-category">Somatic Mirror Exercise</span>
+                <p style={{ fontSize: '1.05rem', lineHeight: '1.65', color: 'var(--text-primary)', marginBottom: '1rem' }}>
+                  {current.reflection}
+                </p>
+                <div style={{ background: 'var(--bg-glass)', padding: '10px 14px', borderRadius: 'var(--radius-sm)', border: '1px dashed var(--border-medium)', fontSize: '0.85rem' }}>
                   <strong>Mirror Ritual:</strong> Look directly into your left eye for 60 seconds while speaking this affirmation aloud 3 times.
                 </div>
-                <div className="card-tap-hint">Tap card to flip back ↻</div>
+                <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginTop: '12px' }}>
+                  Tap card to flip back ↻
+                </div>
               </div>
             </div>
           </div>

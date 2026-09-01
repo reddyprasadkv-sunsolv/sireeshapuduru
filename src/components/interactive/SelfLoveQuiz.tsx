@@ -57,57 +57,62 @@ interface SelfLoveQuizProps {
 }
 
 export const SelfLoveQuiz: React.FC<SelfLoveQuizProps> = ({ onOpenDiscovery }) => {
-  const [currentStep, setCurrentStep] = useState(0); // 0 to 4
+  const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState<number[]>([]);
+  const [selectedScore, setSelectedScore] = useState<number | null>(null);
   const [result, setResult] = useState<QuizResult | null>(null);
   const { playSingingBowlChime } = useAudio();
 
   const handleSelectOption = (score: number) => {
+    setSelectedScore(score);
     const updated = [...answers, score];
     setAnswers(updated);
 
-    if (currentStep < QUIZ_QUESTIONS.length - 1) {
-      setCurrentStep(currentStep + 1);
-    } else {
-      // Calculate Result
-      const total = updated.reduce((a, b) => a + b, 0);
-      const percentage = Math.round((total / 15) * 100);
-      playSingingBowlChime(528);
-
-      if (total <= 8) {
-        setResult({
-          title: "The Weary Caregiver (Heart Under Pressure)",
-          tagline: "Your inner child is exhausted from prioritizing everyone else's approval.",
-          description: "You carry a deep capacity for love, but you are channeling it entirely outward while starving your own soul. You are prone to people-pleasing, guilt, and harsh self-criticism. Mirror work and boundary restoration will be life-changing for you.",
-          quote: "Remember, you have been criticizing yourself for years and it hasn't worked. Try approving of yourself and see what happens. — Louise Hay",
-          score: total,
-          percentage
-        });
-      } else if (total <= 12) {
-        setResult({
-          title: "The Awakening Seeker (Bridge of Self-Compassion)",
-          tagline: "You are beginning to hear your heart's whisper, but old habits pull you back.",
-          description: "You know in your mind that you deserve love, but somatic patterns of self-doubt and guilt still trigger during high stress. Deep 1-on-1 inner child integration and structured forgiveness rituals will anchor your transformation permanently.",
-          quote: "Love is the great miracle cure. Loving ourselves works miracles in our lives. — Louise Hay",
-          score: total,
-          percentage
-        });
+    setTimeout(() => {
+      setSelectedScore(null);
+      if (currentStep < QUIZ_QUESTIONS.length - 1) {
+        setCurrentStep(currentStep + 1);
       } else {
-        setResult({
-          title: "The Radiant Heart (Aligned in Sovereignty)",
-          tagline: "You have built a loving relationship with yourself and honor your worth.",
-          description: "You possess strong self-acceptance and healthy boundaries. Your next evolution is stepping into leadership, expanding abundance consciousness, and holding healing space for your family and community.",
-          quote: "I am in the right place, at the right time, doing the right thing. — Louise Hay",
-          score: total,
-          percentage
-        });
+        const total = updated.reduce((a, b) => a + b, 0);
+        const percentage = Math.round((total / 15) * 100);
+        playSingingBowlChime(528);
+
+        if (total <= 8) {
+          setResult({
+            title: "The Weary Caregiver (Heart Under Pressure)",
+            tagline: "Your inner child is exhausted from prioritizing everyone else's approval.",
+            description: "You carry a deep capacity for love, but you are channeling it entirely outward while starving your own soul. You are prone to people-pleasing, guilt, and harsh self-criticism. Mirror work and boundary restoration will be life-changing for you.",
+            quote: "Remember, you have been criticizing yourself for years and it hasn't worked. Try approving of yourself and see what happens. — Louise Hay",
+            score: total,
+            percentage
+          });
+        } else if (total <= 12) {
+          setResult({
+            title: "The Awakening Seeker (Bridge of Self-Compassion)",
+            tagline: "You are beginning to hear your heart's whisper, but old habits pull you back.",
+            description: "You know in your mind that you deserve love, but somatic patterns of self-doubt and guilt still trigger during high stress. Deep 1-on-1 inner child integration and structured forgiveness rituals will anchor your transformation permanently.",
+            quote: "Love is the great miracle cure. Loving ourselves works miracles in our lives. — Louise Hay",
+            score: total,
+            percentage
+          });
+        } else {
+          setResult({
+            title: "The Radiant Heart (Aligned in Sovereignty)",
+            tagline: "You have built a loving relationship with yourself and honor your worth.",
+            description: "You possess strong self-acceptance and healthy boundaries. Your next evolution is stepping into leadership, expanding abundance consciousness, and holding healing space for your family and community.",
+            quote: "I am in the right place, at the right time, doing the right thing. — Louise Hay",
+            score: total,
+            percentage
+          });
+        }
       }
-    }
+    }, 280);
   };
 
   const handleRetake = () => {
     setAnswers([]);
     setCurrentStep(0);
+    setSelectedScore(null);
     setResult(null);
   };
 
@@ -115,9 +120,12 @@ export const SelfLoveQuiz: React.FC<SelfLoveQuizProps> = ({ onOpenDiscovery }) =
 
   return (
     <section className="quiz-section" id="quiz">
-      <div className="container" style={{ maxWidth: '820px' }}>
+      <div className="container">
         <div className="section-header text-center">
-          <span className="eyebrow">2-Minute Diagnostic Assessment</span>
+          <div className="eyebrow">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            2-Minute Diagnostic Assessment
+          </div>
           <h2 className="section-title">
             Where Does Your <span className="gradient-text">Self-Love Frequency</span> Stand?
           </h2>
@@ -126,9 +134,9 @@ export const SelfLoveQuiz: React.FC<SelfLoveQuizProps> = ({ onOpenDiscovery }) =
           </p>
         </div>
 
-        <div className="quiz-card-wrapper">
+        <div className="quiz-wrapper">
           {!result ? (
-            <div className="quiz-question-card">
+            <div>
               <div className="quiz-progress-bar">
                 <div
                   className="quiz-progress-fill"
@@ -136,7 +144,7 @@ export const SelfLoveQuiz: React.FC<SelfLoveQuizProps> = ({ onOpenDiscovery }) =
                 />
               </div>
 
-              <div className="quiz-step-label">
+              <div style={{ textAlign: 'center', marginBottom: '1.25rem', fontSize: '0.85rem', color: 'var(--accent-gold)', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase' }}>
                 Question {currentStep + 1} of {QUIZ_QUESTIONS.length}
               </div>
 
@@ -144,34 +152,40 @@ export const SelfLoveQuiz: React.FC<SelfLoveQuizProps> = ({ onOpenDiscovery }) =
 
               <div className="quiz-options-list">
                 {q.options.map((opt, idx) => (
-                  <button
+                  <div
                     key={idx}
-                    type="button"
-                    className="quiz-option-btn"
+                    className={`quiz-option-card ${selectedScore === opt.score ? 'selected' : ''}`}
                     onClick={() => handleSelectOption(opt.score)}
                   >
-                    <span className="option-subtext">{opt.subtext}</span>
-                    <span className="option-text">{opt.text}</span>
-                  </button>
+                    <div className="quiz-radio" />
+                    <div>
+                      <div style={{ fontSize: '0.78rem', color: 'var(--accent-rose)', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 600, marginBottom: '2px' }}>
+                        {opt.subtext}
+                      </div>
+                      <div style={{ fontSize: '1rem', color: 'var(--text-primary)', fontWeight: 500 }}>
+                        {opt.text}
+                      </div>
+                    </div>
+                  </div>
                 ))}
               </div>
             </div>
           ) : (
             <div className="quiz-result-card">
-              <div className="result-score-badge">
-                <span className="score-num">{result.percentage}%</span>
-                <span className="score-label">Self-Love Alignment Score</span>
-              </div>
-
+              <div className="result-badge">Your Healing Archetype</div>
               <h3 className="result-title">{result.title}</h3>
-              <p className="result-tagline">{result.tagline}</p>
-              <p className="result-desc">{result.description}</p>
+              <p style={{ fontSize: '1.1rem', color: 'var(--accent-gold)', fontStyle: 'italic', marginBottom: '1.25rem' }}>
+                {result.tagline}
+              </p>
+              <p style={{ fontSize: '1.02rem', lineHeight: '1.7', color: 'var(--text-secondary)', marginBottom: '1.5rem' }}>
+                {result.description}
+              </p>
 
-              <blockquote className="result-quote">
+              <blockquote style={{ background: 'var(--bg-glass)', borderLeft: '3px solid var(--accent-gold)', padding: '16px 20px', borderRadius: '0 var(--radius-md) var(--radius-md) 0', fontStyle: 'italic', color: 'var(--accent-gold-light)', margin: '0 auto 2rem auto', textAlign: 'left', maxWidth: '640px' }}>
                 "{result.quote}"
               </blockquote>
 
-              <div className="result-cta-group">
+              <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
                 <button
                   type="button"
                   className="btn btn-primary"

@@ -43,42 +43,45 @@ export const Connect: React.FC<ConnectProps> = ({ onOpenDiscovery }) => {
       <div className="container">
         <div className="connect-grid">
           {/* Left Column */}
-          <div className="connect-info-col">
-            <span className="eyebrow">Direct Sanctuary Line</span>
-            <h2 className="connect-title">
+          <div className="connect-info">
+            <div className="eyebrow">
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              Direct Sanctuary Line
+            </div>
+            <h2 style={{ fontSize: 'clamp(2rem, 3.5vw, 3rem)', marginBottom: '1rem', lineHeight: '1.2' }}>
               Let Us Begin Your <span className="gradient-text">Sacred Return</span>
             </h2>
-            <p className="connect-desc">
+            <p className="lead" style={{ marginBottom: '2rem' }}>
               Have a question about an upcoming workshop, 1-on-1 mentorship, or feeling called to explore if this space is right for you? Sireesha and her sanctuary team are here to listen with an open heart.
             </p>
 
-            <div className="contact-details-list">
-              <div className="contact-detail-item">
-                <span className="detail-icon">💬</span>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', marginBottom: '2rem' }}>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '14px' }}>
+                <div style={{ fontSize: '1.5rem', flexShrink: 0 }}>💬</div>
                 <div>
-                  <strong>WhatsApp Sanctuary Desk</strong>
-                  <p>+91 9866157263 (Instant response & private audio connect)</p>
+                  <strong style={{ color: 'var(--text-primary)', display: 'block', fontSize: '1rem' }}>WhatsApp Sanctuary Desk</strong>
+                  <p style={{ margin: 0, fontSize: '0.92rem', color: 'var(--text-secondary)' }}>+91 9866157263 (Instant response & private audio connect)</p>
                 </div>
               </div>
 
-              <div className="contact-detail-item">
-                <span className="detail-icon">📍</span>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '14px' }}>
+                <div style={{ fontSize: '1.5rem', flexShrink: 0 }}>📍</div>
                 <div>
-                  <strong>In-Person Sanctuary Hall</strong>
-                  <p>Indiranagar, Bengaluru, Karnataka 560038, India</p>
+                  <strong style={{ color: 'var(--text-primary)', display: 'block', fontSize: '1rem' }}>In-Person Sanctuary Hall</strong>
+                  <p style={{ margin: 0, fontSize: '0.92rem', color: 'var(--text-secondary)' }}>Indiranagar, Bengaluru, Karnataka 560038, India</p>
                 </div>
               </div>
 
-              <div className="contact-detail-item">
-                <span className="detail-icon">🌐</span>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '14px' }}>
+                <div style={{ fontSize: '1.5rem', flexShrink: 0 }}>🌐</div>
                 <div>
-                  <strong>Global Virtual Sessions</strong>
-                  <p>Worldwide via Zoom encrypted sanctuary links</p>
+                  <strong style={{ color: 'var(--text-primary)', display: 'block', fontSize: '1rem' }}>Global Virtual Sessions</strong>
+                  <p style={{ margin: 0, fontSize: '0.92rem', color: 'var(--text-secondary)' }}>Worldwide via Zoom encrypted sanctuary links</p>
                 </div>
               </div>
             </div>
 
-            <div style={{ marginTop: '2rem' }}>
+            <div>
               <button
                 type="button"
                 className="btn btn-primary btn-lg"
@@ -89,19 +92,19 @@ export const Connect: React.FC<ConnectProps> = ({ onOpenDiscovery }) => {
             </div>
           </div>
 
-          {/* Right Column: Contact Form */}
-          <div className="connect-form-card">
+          {/* Right Column: Contact Form Card */}
+          <div className="connect-card">
             {!submitted ? (
               <>
-                <h3 style={{ fontSize: '1.6rem', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>
+                <h3 style={{ fontSize: '1.65rem', marginBottom: '0.4rem', color: 'var(--text-primary)' }}>
                   Send a Heart Message
                 </h3>
-                <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginBottom: '1.5rem' }}>
+                <p style={{ color: 'var(--text-secondary)', fontSize: '0.92rem', marginBottom: '1.5rem' }}>
                   Every message is received in strict confidence by Sireesha.
                 </p>
 
                 <form onSubmit={handleSubmit}>
-                  <div className="form-group" style={{ marginBottom: '1.2rem' }}>
+                  <div className="form-group">
                     <label className="form-label" htmlFor="contactName">Your Name *</label>
                     <input
                       type="text"
@@ -114,8 +117,8 @@ export const Connect: React.FC<ConnectProps> = ({ onOpenDiscovery }) => {
                     />
                   </div>
 
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1.2rem' }}>
-                    <div className="form-group">
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1.25rem' }}>
+                    <div className="form-group" style={{ marginBottom: 0 }}>
                       <label className="form-label" htmlFor="contactPhone">WhatsApp Phone *</label>
                       <input
                         type="tel"
@@ -128,7 +131,7 @@ export const Connect: React.FC<ConnectProps> = ({ onOpenDiscovery }) => {
                       />
                     </div>
 
-                    <div className="form-group">
+                    <div className="form-group" style={{ marginBottom: 0 }}>
                       <label className="form-label" htmlFor="contactEmail">Email Address</label>
                       <input
                         type="email"
@@ -141,7 +144,7 @@ export const Connect: React.FC<ConnectProps> = ({ onOpenDiscovery }) => {
                     </div>
                   </div>
 
-                  <div className="form-group" style={{ marginBottom: '1.5rem' }}>
+                  <div className="form-group">
                     <label className="form-label" htmlFor="contactMessage">How can Sireesha support your journey?</label>
                     <textarea
                       id="contactMessage"
@@ -153,7 +156,7 @@ export const Connect: React.FC<ConnectProps> = ({ onOpenDiscovery }) => {
                     />
                   </div>
 
-                  <button type="submit" className="btn btn-primary" style={{ width: '100%' }}>
+                  <button type="submit" className="btn btn-primary" style={{ width: '100%', marginTop: '0.5rem' }}>
                     Send Message to Sanctuary ✨
                   </button>
                 </form>
@@ -161,7 +164,7 @@ export const Connect: React.FC<ConnectProps> = ({ onOpenDiscovery }) => {
             ) : (
               <div style={{ textAlign: 'center', padding: '2.5rem 1rem' }}>
                 <div style={{ fontSize: '3.5rem', marginBottom: '1rem' }}>🕊️</div>
-                <h3 style={{ fontSize: '1.6rem', color: 'var(--accent-gold)', marginBottom: '0.75rem' }}>
+                <h3 style={{ fontSize: '1.7rem', color: 'var(--accent-gold)', marginBottom: '0.75rem' }}>
                   Message Received in Peace
                 </h3>
                 <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.6', marginBottom: '1.5rem' }}>

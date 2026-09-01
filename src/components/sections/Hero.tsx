@@ -9,18 +9,20 @@ interface HeroProps {
 export const Hero: React.FC<HeroProps> = ({ onOpenDiscovery }) => {
   return (
     <section className="hero-section" id="sanctuary">
-      <div className="container hero-container">
+      <div className="container hero-grid">
         <div className="hero-content">
-          <div className="hero-badge">
-            <span className="badge-sparkle">✨</span>
-            <span>Louise Hay Certified Heal Your Life® Facilitator & Spiritual Life Coach</span>
+          <div className="hero-badge-group">
+            <span className="eyebrow">
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              Louise Hay Certified Heal Your Life® Facilitator & Spiritual Life Coach
+            </span>
           </div>
 
           <h1 className="hero-title">
-            Transform Your Pain Into <span className="gradient-text">Power</span>. Reconnect With Your <span className="gradient-text-rose">Heart</span>.
+            Transform Your Pain Into <span className="gradient-text">Power</span>. Reconnect With Your <span className="gradient-text">Heart</span>.
           </h1>
 
-          <p className="hero-subtitle">
+          <p className="hero-description lead">
             Welcome to a sacred sanctuary where you are safe to feel, heal, and forgive. Learn how to look in the mirror with deep reverence, dismantle inner criticism, and awaken your boundless spiritual potential.
           </p>
 
@@ -47,35 +49,34 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDiscovery }) => {
             </a>
           </div>
 
-          <div className="hero-stats-bar">
+          <div className="hero-stats-row">
             <div className="stat-item">
-              <span className="stat-number">500+</span>
+              <span className="stat-num">500+</span>
               <span className="stat-label">Lives Touched</span>
             </div>
-            <div className="stat-divider" />
             <div className="stat-item">
-              <span className="stat-number">100%</span>
+              <span className="stat-num">100%</span>
               <span className="stat-label">Safe Sanctuary</span>
             </div>
-            <div className="stat-divider" />
             <div className="stat-item">
-              <span className="stat-number">Louise Hay</span>
+              <span className="stat-num">Louise Hay</span>
               <span className="stat-label">Certified Lineage</span>
             </div>
           </div>
         </div>
 
-        <div className="hero-media-wrapper">
-          <div className="hero-portrait-frame">
-            <img src="assets/images/hero-sireesha.png" alt="Sireesha Puduru Spiritual Life Coach" className="hero-portrait-img" />
-            <div className="portrait-glow-ring" />
-            <div className="floating-affirmation-pill pill-top">
-              <span className="pill-heart">💖</span>
-              <span>"I am worthy of unconditional love."</span>
-            </div>
-            <div className="floating-affirmation-pill pill-bottom">
-              <span className="pill-star">🌿</span>
-              <span>"All is well in my world."</span>
+        <div className="hero-visual">
+          <div className="hero-image-wrapper">
+            <img
+              src="assets/images/sireesha-portrait.jpg"
+              alt="Sireesha Puduru Spiritual Life Coach & Healer"
+            />
+          </div>
+          <div className="hero-floating-card">
+            <div className="floating-icon">💖</div>
+            <div>
+              <div className="floating-text">"I am worthy of unconditional love."</div>
+              <div className="floating-subtext">Daily Louise Hay Mirror Ritual</div>
             </div>
           </div>
         </div>

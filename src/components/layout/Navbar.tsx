@@ -28,7 +28,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDiscovery }) => {
       <header className={`navbar-wrapper ${isScrolled ? 'scrolled' : ''}`}>
         <div className="nav-container">
           <Link href="/" className="brand-logo" aria-label="Sireesha Puduru Home">
-            <img src="assets/images/logo.png" alt="Sireesha Puduru Emblem" width="48" height="48" className="logo-img" />
+            <img src="assets/images/logo.png" alt="Sireesha Puduru Emblem" width="44" height="44" />
             <div className="brand-text">
               <span className="brand-name">Sireesha Puduru</span>
               <span className="brand-tagline">The Art of Loving Academy</span>
@@ -53,12 +53,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDiscovery }) => {
               title={isPlaying ? 'Pause Ambient Sound' : 'Play 528Hz Ambient Drone'}
               aria-label="Toggle Ambient Sanctuary Sound"
             >
-              <div className="eq-bars">
+              <div className="eq-animation">
                 <span className="eq-bar" />
                 <span className="eq-bar" />
                 <span className="eq-bar" />
               </div>
-              <span className="ambient-label">{isPlaying ? 'Sanctuary Ambient: ON' : 'Ambient Sound'}</span>
+              <span>{isPlaying ? 'Ambient: ON' : 'Ambient Sound'}</span>
             </button>
 
             <button
@@ -68,8 +68,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDiscovery }) => {
               title="Toggle Theme Mode"
               aria-label="Toggle Theme Mode"
             >
-              <span className="theme-icon-sun" style={{ display: theme === 'dawn' ? 'block' : 'none' }}>☀️</span>
-              <span className="theme-icon-moon" style={{ display: theme === 'twilight' ? 'block' : 'none' }}>🌙</span>
+              {theme === 'dawn' ? '☀️' : '🌙'}
             </button>
 
             {onOpenDiscovery && (
@@ -84,53 +83,51 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDiscovery }) => {
 
             <button
               type="button"
-              className={`mobile-menu-toggle ${isMobileOpen ? 'active' : ''}`}
+              className="mobile-toggle"
               onClick={() => setIsMobileOpen(!isMobileOpen)}
-              aria-label="Toggle Menu"
+              aria-label="Toggle Navigation Menu"
             >
-              <span className="hamburger-line" />
-              <span className="hamburger-line" />
-              <span className="hamburger-line" />
+              {isMobileOpen ? '✕' : '☰'}
             </button>
           </div>
         </div>
       </header>
 
-      {/* Mobile Drawer Navigation */}
-      <div className={`mobile-nav-drawer ${isMobileOpen ? 'active' : ''}`}>
-        <div className="mobile-nav-links">
-          <Link href="/#philosophy" className="mobile-link" onClick={() => setIsMobileOpen(false)}>Philosophy</Link>
-          <Link href="/#programs" className="mobile-link" onClick={() => setIsMobileOpen(false)}>Offerings</Link>
-          <Link href="/#events" className="mobile-link" onClick={() => setIsMobileOpen(false)}>Events & Immersions</Link>
-          <Link href="/#story" className="mobile-link" onClick={() => setIsMobileOpen(false)}>About Sireesha</Link>
-          <Link href="/#mirror-work" className="mobile-link" onClick={() => setIsMobileOpen(false)}>Daily Affirmations</Link>
-          <Link href="/#quiz" className="mobile-link" onClick={() => setIsMobileOpen(false)}>Self-Love Assessment</Link>
-          <Link href="/#connect" className="mobile-link" onClick={() => setIsMobileOpen(false)}>Sanctuary Desk</Link>
-          
-          <div style={{ marginTop: '1.5rem', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-            {onOpenDiscovery && (
-              <button
-                type="button"
-                className="btn btn-primary"
-                onClick={() => {
-                  setIsMobileOpen(false);
-                  onOpenDiscovery();
-                }}
-              >
-                Book 20-Min Discovery Call
-              </button>
-            )}
+      {/* Mobile Drawer Navigation (Hidden on desktop) */}
+      <div className={`mobile-menu ${isMobileOpen ? 'open' : ''}`}>
+        <nav className="nav-links">
+          <Link href="/#philosophy" className="nav-link" onClick={() => setIsMobileOpen(false)}>Philosophy</Link>
+          <Link href="/#programs" className="nav-link" onClick={() => setIsMobileOpen(false)}>Offerings</Link>
+          <Link href="/#events" className="nav-link" onClick={() => setIsMobileOpen(false)}>Events & Immersions</Link>
+          <Link href="/#story" className="nav-link" onClick={() => setIsMobileOpen(false)}>About Sireesha</Link>
+          <Link href="/#mirror-work" className="nav-link" onClick={() => setIsMobileOpen(false)}>Daily Affirmations</Link>
+          <Link href="/#quiz" className="nav-link" onClick={() => setIsMobileOpen(false)}>Self-Love Assessment</Link>
+          <Link href="/#connect" className="nav-link" onClick={() => setIsMobileOpen(false)}>Sanctuary Desk</Link>
+        </nav>
 
-            <a
-              href="https://api.whatsapp.com/send?phone=919866157263&text=Hi%20Sireesha%2C%20I%20am%20reaching%20out%20from%20your%20website."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-whatsapp"
-              onClick={() => setIsMobileOpen(false)}
+        <div style={{ marginTop: '1.5rem', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+          {onOpenDiscovery && (
+            <button
+              type="button"
+              className="btn btn-primary"
+              onClick={() => {
+                setIsMobileOpen(false);
+                onOpenDiscovery();
+              }}
             >
-              💬 Talk to me
-            </a>
-          </div>
+              Book 20-Min Discovery Call
+            </button>
+          )}
+
+          <a
+            href="https://api.whatsapp.com/send?phone=919866157263&text=Hi%20Sireesha%2C%20I%20am%20reaching%20out%20from%20your%20website."
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-whatsapp"
+            onClick={() => setIsMobileOpen(false)}
+          >
+            💬 Talk to me
+          </a>
         </div>
       </div>
     </>
