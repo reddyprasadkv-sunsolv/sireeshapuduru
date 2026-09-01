@@ -68,7 +68,7 @@ export const Connect: React.FC<ConnectProps> = ({ onOpenDiscovery }) => {
                 <div style={{ fontSize: '1.5rem', flexShrink: 0 }}>📍</div>
                 <div>
                   <strong style={{ color: 'var(--text-primary)', display: 'block', fontSize: '1rem' }}>In-Person Sanctuary Hall</strong>
-                  <p style={{ margin: 0, fontSize: '0.92rem', color: 'var(--text-secondary)' }}>Indiranagar, Bengaluru, Karnataka 560038, India</p>
+                  <p style={{ margin: 0, fontSize: '0.92rem', color: 'var(--text-secondary)' }}>Hyderabad, Telangana, India</p>
                 </div>
               </div>
 

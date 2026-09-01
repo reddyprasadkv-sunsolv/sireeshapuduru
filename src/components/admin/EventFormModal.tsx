@@ -21,7 +21,7 @@ export const EventFormModal: React.FC<EventFormModalProps> = ({ isOpen, event, o
     time: '09:30 AM – 05:30 PM IST',
     status: 'upcoming' as 'upcoming' | 'past',
     locationType: 'offline' as 'online' | 'offline',
-    locationAddress: 'The Sanctuary Hall, Indiranagar, Bengaluru, Karnataka 560038',
+    locationAddress: 'The Sanctuary Hall, Banjara Hills, Hyderabad, Telangana 500034',
   });
 
   useEffect(() => {
@@ -49,7 +49,7 @@ export const EventFormModal: React.FC<EventFormModalProps> = ({ isOpen, event, o
         time: '09:30 AM – 05:30 PM IST',
         status: 'upcoming',
         locationType: 'offline',
-        locationAddress: 'The Sanctuary Hall, Indiranagar, Bengaluru, Karnataka 560038',
+        locationAddress: 'The Sanctuary Hall, Banjara Hills, Hyderabad, Telangana 500034',
       });
     }
   }, [event, isOpen]);
@@ -70,7 +70,7 @@ export const EventFormModal: React.FC<EventFormModalProps> = ({ isOpen, event, o
   const handleLocationTypeChange = (type: 'online' | 'offline') => {
     const address = type === 'online'
       ? 'Online via Zoom Sanctuary (Link shared upon registration)'
-      : 'The Sanctuary Hall, Indiranagar, Bengaluru, Karnataka 560038';
+      : 'The Sanctuary Hall, Banjara Hills, Hyderabad, Telangana 500034';
     setFormData({ ...formData, locationType: type, locationAddress: address });
   };
 

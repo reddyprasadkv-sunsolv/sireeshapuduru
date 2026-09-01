@@ -60,15 +60,10 @@ export const Footer: React.FC = () => {
           <div className="footer-col">
             <h4 className="footer-heading">Direct Connect</h4>
             <div className="footer-contact-item">
-              <span>📍 Bengaluru Sanctuary & Global Virtual Sessions</span>
+              <span>📍 Hyderabad</span>
             </div>
             <div className="footer-contact-item">
               <span>📱 +91 9866157263 (WhatsApp Sanctuary)</span>
-            </div>
-            <div style={{ marginTop: '1.25rem' }}>
-              <Link href="/admin" className="admin-discrete-link" title="Sanctuary Administration Portal">
-                🔒 Admin Sanctuary Desk
-              </Link>
             </div>
           </div>
         </div>

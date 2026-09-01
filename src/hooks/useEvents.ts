@@ -17,7 +17,7 @@ const DEFAULT_EVENTS: Event[] = [
     time: '09:30 AM – 05:30 PM IST',
     status: 'upcoming',
     locationType: 'offline',
-    locationAddress: 'The Sacred Sanctuary Hall, Indiranagar, Bengaluru, Karnataka 560038',
+    locationAddress: 'The Sacred Sanctuary Hall, Banjara Hills, Hyderabad, Telangana 500034',
     featured: true,
   },
   {
@@ -42,7 +42,7 @@ const DEFAULT_EVENTS: Event[] = [
     time: '09:30 AM – 05:30 PM IST',
     status: 'past',
     locationType: 'offline',
-    locationAddress: 'Leela Palace Wellness Retreat Center, Old Airport Road, Bengaluru',
+    locationAddress: 'Taj Krishna Wellness Retreat Center, Banjara Hills, Hyderabad',
     featured: false,
   },
   {

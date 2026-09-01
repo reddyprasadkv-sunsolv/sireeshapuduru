@@ -32,7 +32,7 @@ export const EventsSection: React.FC<EventsSectionProps> = ({ onOpenDiscoveryWit
             Upcoming & Past <span className="gradient-text">Sanctuary Gatherings</span>
           </h2>
           <p className="section-subtitle">
-            Join Sireesha in person across Bengaluru retreat sanctuaries or virtually from anywhere in the world.
+            Join Sireesha in person in Hyderabad or virtually from anywhere in the world.
           </p>
         </div>
 
