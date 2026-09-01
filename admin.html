@@ -545,23 +545,23 @@
       }
 
       initTheme() {
-        const savedTheme = localStorage.getItem('sireesha_theme') || 'twilight';
+        const savedTheme = localStorage.getItem('sireesha_theme') || 'dawn';
         this.applyTheme(savedTheme, false);
       }
 
       applyTheme(theme, save = true) {
         const root = document.documentElement;
         const btn = document.getElementById('adminThemeToggleBtn');
-        if (theme === 'dawn') {
-          root.setAttribute('data-theme', 'dawn');
-          if (btn) btn.innerHTML = '☀️ Ethereal Dawn Mode';
-          const dawnRadio = document.getElementById('themeDawnRadio');
-          if (dawnRadio) dawnRadio.checked = true;
-        } else {
+        if (theme === 'twilight') {
           root.removeAttribute('data-theme');
           if (btn) btn.innerHTML = '🌙 Sacred Twilight Mode';
           const twilightRadio = document.getElementById('themeTwilightRadio');
           if (twilightRadio) twilightRadio.checked = true;
+        } else {
+          root.setAttribute('data-theme', 'dawn');
+          if (btn) btn.innerHTML = '☀️ Ethereal Dawn Mode';
+          const dawnRadio = document.getElementById('themeDawnRadio');
+          if (dawnRadio) dawnRadio.checked = true;
         }
         if (save) {
           localStorage.setItem('sireesha_theme', theme);
@@ -569,7 +569,7 @@
       }
 
       toggleTheme() {
-        const currentTheme = localStorage.getItem('sireesha_theme') || 'twilight';
+        const currentTheme = localStorage.getItem('sireesha_theme') || 'dawn';
         const nextTheme = currentTheme === 'dawn' ? 'twilight' : 'dawn';
         this.applyTheme(nextTheme, true);
       }
@@ -760,13 +760,13 @@
         const webhookInput = document.getElementById('webhookUrl');
         webhookInput.value = localStorage.getItem('sireesha_sheets_webhook_url') || '';
         
-        const currentTheme = localStorage.getItem('sireesha_theme') || 'twilight';
-        if (currentTheme === 'dawn') {
-          const dawnRadio = document.getElementById('themeDawnRadio');
-          if (dawnRadio) dawnRadio.checked = true;
-        } else {
+        const currentTheme = localStorage.getItem('sireesha_theme') || 'dawn';
+        if (currentTheme === 'twilight') {
           const twilightRadio = document.getElementById('themeTwilightRadio');
           if (twilightRadio) twilightRadio.checked = true;
+        } else {
+          const dawnRadio = document.getElementById('themeDawnRadio');
+          if (dawnRadio) dawnRadio.checked = true;
         }
 
         modal.classList.add('active');
