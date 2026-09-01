@@ -8,6 +8,7 @@ import { EventsManagerView } from '@/components/admin/EventsManagerView';
 import { RegistrationsLedgerView } from '@/components/admin/RegistrationsLedgerView';
 import { LeadsLedgerView } from '@/components/admin/LeadsLedgerView';
 import { SettingsModal } from '@/components/admin/SettingsModal';
+import { getAssetPath } from '@/utils/assets';
 
 export default function AdminPage() {
   const { theme, toggleTheme } = useTheme();
@@ -43,7 +44,7 @@ export default function AdminPage() {
       <header className="admin-sticky-nav">
         <div className="nav-container" style={{ maxWidth: '1240px', margin: '0 auto', padding: '0.75rem 1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <div className="brand-logo" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <img src="assets/images/logo.png" alt="Logo" width="40" height="40" />
+            <img src={getAssetPath('assets/images/logo.png')} alt="Logo" width="40" height="40" />
             <div className="brand-text">
               <span className="brand-name" style={{ fontWeight: 700, fontSize: '1.05rem', display: 'block', color: 'var(--text-primary)' }}>Sireesha Puduru</span>
               <span className="brand-tagline" style={{ fontSize: '0.75rem', color: 'var(--accent-gold)', letterSpacing: '0.05em' }}>Admin Sanctuary Desk</span>

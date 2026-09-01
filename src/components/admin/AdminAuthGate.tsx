@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { getAssetPath } from '@/utils/assets';
 
 interface AdminAuthGateProps {
   onUnlock: () => void;
@@ -28,7 +29,7 @@ export const AdminAuthGate: React.FC<AdminAuthGateProps> = ({ onUnlock }) => {
     <div className="auth-gate-wrapper">
       <div className="auth-card">
         <div className="logo-badge">
-          <img src="assets/images/logo.png" alt="Sireesha Puduru Emblem" />
+          <img src={getAssetPath('assets/images/logo.png')} alt="Sireesha Puduru Emblem" />
         </div>
         <span className="eyebrow" style={{ color: 'var(--accent-gold)' }}>Private Sanctuary Desk</span>
         <h1 style={{ fontSize: '1.9rem', marginTop: '0.5rem', marginBottom: '0.5rem' }}>Admin Management Portal</h1>

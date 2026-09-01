@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { Event } from '@/types';
 import { useEvents } from '@/hooks/useEvents';
 import { EventFormModal } from './EventFormModal';
+import { getAssetPath } from '@/utils/assets';
 
 interface EventsManagerViewProps {
   onViewRegistrations: (eventId?: string) => void;
@@ -126,7 +127,7 @@ export const EventsManagerView: React.FC<EventsManagerViewProps> = ({ onViewRegi
             return (
               <div key={evt.id} className="admin-event-card">
                 <div className="admin-event-img-wrap">
-                  <img src={evt.banner || 'assets/images/workshop-1.png'} alt={evt.title} className="admin-event-img" />
+                  <img src={getAssetPath(evt.banner || 'assets/images/sanctuary.png')} alt={evt.title} className="admin-event-img" />
                   <div style={{ position: 'absolute', top: '10px', left: '10px', display: 'flex', gap: '6px' }}>
                     <span className={`type-badge ${isOnline ? 'event-type' : 'message'}`}>
                       {isOnline ? '🌐 Online' : '📍 In-Person'}
