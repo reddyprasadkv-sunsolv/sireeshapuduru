@@ -60,6 +60,7 @@
           <li><a href="#philosophy" class="nav-link">Philosophy</a></li>
           <li><a href="#mirror-work" class="nav-link">Daily Practice</a></li>
           <li><a href="#programs" class="nav-link">Programs</a></li>
+          <li><a href="#events" class="nav-link">Events</a></li>
           <li><a href="#testimonials" class="nav-link">Stories</a></li>
           <li><a href="#wisdom" class="nav-link">Wisdom</a></li>
           <li><a href="#quiz" class="nav-link">Assessment</a></li>
@@ -101,6 +102,7 @@
         <li><a href="#philosophy" class="nav-link">Self-Love & Healing</a></li>
         <li><a href="#mirror-work" class="nav-link">Louise Hay Mirror Work</a></li>
         <li><a href="#programs" class="nav-link">Workshops & Programs</a></li>
+        <li><a href="#events" class="nav-link">Upcoming & Past Events</a></li>
         <li><a href="#academy" class="nav-link">The Academy Sanctuary</a></li>
         <li><a href="#testimonials" class="nav-link">Testimonials & Voices</a></li>
         <li><a href="#wisdom" class="nav-link">Wisdom Space Articles</a></li>
@@ -506,6 +508,38 @@
             All programs are part of <strong>The Art of Loving Academy</strong> — a space created with love to help you grow with compassion, clarity, and courage.
           </p>
           <a href="#connect" class="btn btn-primary" data-modal-target="discovery">Book a Free Discovery Call with Sireesha ✨</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         EVENTS & SACRED IMMERSIONS SECTION (UPCOMING & PAST)
+         ========================================================================== -->
+    <section class="events-section" id="events">
+      <div class="container">
+        
+        <div class="section-header reveal-init">
+          <span class="eyebrow">Sacred Gatherings & Immersions</span>
+          <h2>Upcoming & Past <span class="gradient-text">Events</span></h2>
+          <p class="section-subtitle">
+            Join Sireesha Puduru for in-person transformational workshop retreats, sacred Louise Hay healing circles, and global online masterclasses.
+          </p>
+        </div>
+
+        <!-- Event Filter Tabs -->
+        <div class="events-tabs-wrap reveal-init">
+          <button type="button" class="event-tab-btn active" data-tab="upcoming" id="upcomingEventsTab">
+            🌟 Upcoming Gatherings
+          </button>
+          <button type="button" class="event-tab-btn" data-tab="past" id="pastEventsTab">
+            🕊️ Past Events & Archive
+          </button>
+        </div>
+
+        <!-- Dynamic Events Grid -->
+        <div class="events-grid reveal-init" id="eventsGrid">
+          <!-- Injected via events.js -->
         </div>
 
       </div>
@@ -953,9 +987,59 @@
     <span>Talk to me</span>
   </a>
 
+  <!-- ==========================================================================
+       EVENT REGISTRATION MODAL
+       ========================================================================== -->
+  <div class="modal-overlay" id="eventRegistrationModal" role="dialog" aria-modal="true" aria-labelledby="modalEventTitle">
+    <div class="modal-card">
+      <button type="button" class="modal-close-btn" onclick="window.eventsManager.closeRegistrationModal()" aria-label="Close Registration Modal">✕</button>
+      
+      <div class="modal-header" style="text-align: center; margin-bottom: var(--space-lg);">
+        <span class="eyebrow">Event Registration</span>
+        <h3 id="modalEventTitle" style="font-size: 1.65rem; margin-top: 6px; margin-bottom: 6px; color: var(--text-primary);">Event Title</h3>
+      </div>
+
+      <div class="event-modal-summary-card">
+        <p id="modalEventDate" style="font-weight: 600; color: var(--accent-gold); font-size: 0.95rem;"></p>
+        <p id="modalEventLocation" style="font-size: 0.9rem; color: var(--text-secondary);"></p>
+      </div>
+
+      <form id="eventRegistrationForm" onsubmit="handleEventRegistrationSubmit(event)">
+        <input type="hidden" id="regEventId" name="eventId" value="">
+
+        <div class="form-group">
+          <label for="regName" class="form-label">Full Name *</label>
+          <input type="text" id="regName" name="name" class="form-input" placeholder="Enter your full name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="regEmail" class="form-label">Email Address *</label>
+          <input type="email" id="regEmail" name="email" class="form-input" placeholder="e.g. yourname@example.com" required>
+        </div>
+
+        <div class="form-group">
+          <label for="regPhone" class="form-label">Phone Number (WhatsApp) *</label>
+          <input type="tel" id="regPhone" name="phone" class="form-input" placeholder="+91 98765 43210" required>
+        </div>
+
+        <div class="form-group">
+          <label for="regNotes" class="form-label">Any intention, note, or query for Sireesha (Optional)</label>
+          <textarea id="regNotes" name="notes" class="form-textarea" placeholder="What are you hoping to heal or experience during this gathering?" rows="3"></textarea>
+        </div>
+
+        <div id="eventRegFeedback" style="display: none; padding: 12px; border-radius: var(--radius-sm); margin-bottom: 1rem; text-align: center; font-size: 0.95rem;"></div>
+
+        <button type="submit" class="btn btn-primary" id="eventRegSubmitBtn" style="width: 100%; font-size: 1.05rem; padding: 14px;">
+          Confirm My Event Registration ✨
+        </button>
+      </form>
+    </div>
+  </div>
+
   <!-- Scripts -->
   <script src="assets/js/audio.js"></script>
   <script src="assets/js/leads.js"></script>
+  <script src="assets/js/events.js"></script>
   <script src="assets/js/mirror-work.js"></script>
   <script src="assets/js/quiz.js"></script>
   <script src="assets/js/modals.js"></script>

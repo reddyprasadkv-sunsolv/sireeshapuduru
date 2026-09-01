@@ -220,4 +220,93 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     revealElements.forEach(el => el.classList.add('revealed'));
   }
+
+  // 8. Events & Gatherings Tab Switcher & Dynamic Loader
+  const eventsGrid = document.getElementById('eventsGrid');
+  if (eventsGrid && window.eventsManager) {
+    let currentEventTab = 'upcoming';
+    window.eventsManager.renderUserEvents('eventsGrid', currentEventTab);
+
+    const upcomingBtn = document.getElementById('upcomingEventsTab');
+    const pastBtn = document.getElementById('pastEventsTab');
+
+    if (upcomingBtn && pastBtn) {
+      upcomingBtn.addEventListener('click', () => {
+        currentEventTab = 'upcoming';
+        upcomingBtn.classList.add('active');
+        pastBtn.classList.remove('active');
+        window.eventsManager.renderUserEvents('eventsGrid', 'upcoming');
+      });
+
+      pastBtn.addEventListener('click', () => {
+        currentEventTab = 'past';
+        pastBtn.classList.add('active');
+        upcomingBtn.classList.remove('active');
+        window.eventsManager.renderUserEvents('eventsGrid', 'past');
+      });
+    }
+  }
 });
+
+/**
+ * Global Handler for User Portal Event Registration Form
+ */
+window.handleEventRegistrationSubmit = function(e) {
+  e.preventDefault();
+  const form = e.target;
+  const eventId = form.eventId.value;
+  const name = form.name.value.trim();
+  const email = form.email.value.trim();
+  const phone = form.phone.value.trim();
+  const notes = form.notes ? form.notes.value.trim() : '';
+
+  const feedback = document.getElementById('eventRegFeedback');
+  const submitBtn = document.getElementById('eventRegSubmitBtn');
+
+  if (!name || !email || !phone) {
+    if (feedback) {
+      feedback.style.display = 'block';
+      feedback.style.background = 'rgba(239, 68, 68, 0.15)';
+      feedback.style.color = '#ef4444';
+      feedback.textContent = 'Please provide your name, email, and phone number.';
+    }
+    return;
+  }
+
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Registering your seat...';
+  }
+
+  const reg = window.eventsManager.registerUser(eventId, {
+    name,
+    email,
+    phone,
+    notes
+  });
+
+  if (window.sacredSound) window.sacredSound.playBellChime();
+
+  const eventObj = window.eventsManager.getEventById(eventId);
+  const eventTitle = eventObj ? eventObj.title : 'Sacred Event';
+
+  const modalBody = form.parentElement;
+  modalBody.innerHTML = `
+    <div style="text-align: center; padding: 2rem 1rem; animation: fadeInUp 0.5s ease;">
+      <div style="font-size: 3.5rem; margin-bottom: 1rem;">✨🕊️</div>
+      <span class="eyebrow" style="color: var(--accent-emerald);">Seat Confirmed</span>
+      <h3 style="font-size: 1.85rem; margin-top: 0.5rem; margin-bottom: 0.75rem; color: var(--text-primary);">You're Registered, ${name}!</h3>
+      <p style="font-size: 1.02rem; color: var(--text-secondary); max-width: 480px; margin: 0 auto 1.5rem auto; line-height: 1.6;">
+        We have reserved your sacred seat for <strong>${eventTitle}</strong>. Confirmation and orientation details have been captured.
+      </p>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href="https://api.whatsapp.com/send?phone=919866157263&text=${encodeURIComponent(`Hi Sireesha, I have registered for "${eventTitle}".\nName: ${name}\nEmail: ${email}\nPhone: ${phone}`)}" target="_blank" class="btn btn-whatsapp">
+          Connect on WhatsApp 💬
+        </a>
+        <button type="button" class="btn btn-secondary" onclick="window.eventsManager.closeRegistrationModal(); window.location.reload();">
+          Close Window
+        </button>
+      </div>
+    </div>
+  `;
+};
