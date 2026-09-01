@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -342,6 +342,9 @@
         </div>
 
         <div class="nav-actions">
+          <button type="button" class="btn btn-secondary btn-sm" id="adminThemeToggleBtn" onclick="window.adminPortal.toggleTheme()" title="Switch Ambiance Theme Mode">
+            🌙 Sacred Twilight Mode
+          </button>
           <button type="button" class="btn btn-primary btn-sm" onclick="window.leadsManager.exportToExcel()">
             📥 Download Excel Sheet (.csv)
           </button>
@@ -480,6 +483,30 @@
           <input type="password" id="newPasscode" class="form-control" placeholder="Enter new passcode to update">
         </div>
 
+        <!-- Academy Ambiance Theme Switcher -->
+        <div class="form-group" style="margin-top: 1.5rem;">
+          <label class="form-label">Academy Ambiance & Theme Mode</label>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+            Switch between Sacred Twilight and Ethereal Dawn modes. Applies to Admin Desk and Live Academy Site.
+          </p>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;">
+            <label style="display: flex; align-items: center; gap: 10px; padding: 12px 14px; border: 1px solid var(--border-medium); border-radius: var(--radius-md); background: var(--bg-card); cursor: pointer; transition: all var(--transition-fast);">
+              <input type="radio" name="adminThemeChoice" value="twilight" id="themeTwilightRadio" onchange="window.adminPortal.applyTheme('twilight')">
+              <div>
+                <strong style="display: block; font-size: 0.95rem; color: var(--accent-gold);">🌙 Sacred Twilight Mode</strong>
+                <small style="color: var(--text-muted); font-size: 0.78rem;">Midnight Indigo & Gold Dark Sanctuary</small>
+              </div>
+            </label>
+            <label style="display: flex; align-items: center; gap: 10px; padding: 12px 14px; border: 1px solid var(--border-medium); border-radius: var(--radius-md); background: var(--bg-card); cursor: pointer; transition: all var(--transition-fast);">
+              <input type="radio" name="adminThemeChoice" value="dawn" id="themeDawnRadio" onchange="window.adminPortal.applyTheme('dawn')">
+              <div>
+                <strong style="display: block; font-size: 0.95rem; color: var(--accent-gold);">☀️ Ethereal Dawn Mode</strong>
+                <small style="color: var(--text-muted); font-size: 0.78rem;">Warm Ivory & Champagne Morning Light</small>
+              </div>
+            </label>
+          </div>
+        </div>
+
         <div style="display: flex; gap: 1rem; margin-top: 2rem;">
           <button type="submit" class="btn btn-primary" style="flex: 1;">Save Settings ✨</button>
           <button type="button" class="btn btn-secondary" onclick="document.getElementById('adminSettingsModal').classList.remove('active')">Cancel</button>
@@ -504,6 +531,8 @@
       }
 
       init() {
+        this.initTheme();
+
         // Set default passcode if not set
         if (!localStorage.getItem(this.AUTH_PASSCODE_KEY)) {
           localStorage.setItem(this.AUTH_PASSCODE_KEY, 'sireesha2026');
@@ -513,6 +542,36 @@
         if (sessionStorage.getItem(this.AUTH_SESSION_KEY) === 'true') {
           this.unlockDashboard();
         }
+      }
+
+      initTheme() {
+        const savedTheme = localStorage.getItem('sireesha_theme') || 'twilight';
+        this.applyTheme(savedTheme, false);
+      }
+
+      applyTheme(theme, save = true) {
+        const root = document.documentElement;
+        const btn = document.getElementById('adminThemeToggleBtn');
+        if (theme === 'dawn') {
+          root.setAttribute('data-theme', 'dawn');
+          if (btn) btn.innerHTML = '☀️ Ethereal Dawn Mode';
+          const dawnRadio = document.getElementById('themeDawnRadio');
+          if (dawnRadio) dawnRadio.checked = true;
+        } else {
+          root.removeAttribute('data-theme');
+          if (btn) btn.innerHTML = '🌙 Sacred Twilight Mode';
+          const twilightRadio = document.getElementById('themeTwilightRadio');
+          if (twilightRadio) twilightRadio.checked = true;
+        }
+        if (save) {
+          localStorage.setItem('sireesha_theme', theme);
+        }
+      }
+
+      toggleTheme() {
+        const currentTheme = localStorage.getItem('sireesha_theme') || 'twilight';
+        const nextTheme = currentTheme === 'dawn' ? 'twilight' : 'dawn';
+        this.applyTheme(nextTheme, true);
       }
 
       handleLogin() {
@@ -700,12 +759,27 @@
         const modal = document.getElementById('adminSettingsModal');
         const webhookInput = document.getElementById('webhookUrl');
         webhookInput.value = localStorage.getItem('sireesha_sheets_webhook_url') || '';
+        
+        const currentTheme = localStorage.getItem('sireesha_theme') || 'twilight';
+        if (currentTheme === 'dawn') {
+          const dawnRadio = document.getElementById('themeDawnRadio');
+          if (dawnRadio) dawnRadio.checked = true;
+        } else {
+          const twilightRadio = document.getElementById('themeTwilightRadio');
+          if (twilightRadio) twilightRadio.checked = true;
+        }
+
         modal.classList.add('active');
       }
 
       saveSettings(form) {
         const webhookUrl = document.getElementById('webhookUrl').value.trim();
         const newPasscode = document.getElementById('newPasscode').value.trim();
+        const selectedThemeRadio = document.querySelector('input[name="adminThemeChoice"]:checked');
+
+        if (selectedThemeRadio) {
+          this.applyTheme(selectedThemeRadio.value, true);
+        }
 
         if (webhookUrl) {
           localStorage.setItem('sireesha_sheets_webhook_url', webhookUrl);
