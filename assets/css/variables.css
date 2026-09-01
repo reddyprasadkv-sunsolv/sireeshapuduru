@@ -49,6 +49,24 @@
   --glow-rose: 0 0 35px rgba(230, 157, 156, 0.18);
   --glow-emerald: 0 0 35px rgba(61, 128, 99, 0.2);
 
+  /* --- BUTTON TOKENS (Sacred Twilight Dark Luxury) --- */
+  --btn-primary-bg: linear-gradient(135deg, #f3cf95 0%, #d49c48 50%, #b8863f 100%);
+  --btn-primary-hover-bg: linear-gradient(135deg, #fae2b8 0%, #e2b270 100%);
+  --btn-primary-text: #0f121d;
+  --btn-primary-shadow: 0 4px 20px rgba(226, 178, 112, 0.32), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+  --btn-primary-hover-shadow: 0 8px 30px rgba(226, 178, 112, 0.5);
+
+  --btn-secondary-bg: rgba(22, 27, 42, 0.85);
+  --btn-secondary-border: rgba(226, 178, 112, 0.3);
+  --btn-secondary-text: #fbf8f3;
+  --btn-secondary-hover-bg: rgba(35, 43, 66, 0.95);
+  --btn-secondary-hover-border: rgba(226, 178, 112, 0.7);
+  --btn-secondary-hover-text: #f5d49f;
+
+  --btn-rose-bg: linear-gradient(135deg, #f09ea1 0%, #c8636b 100%);
+  --btn-rose-hover-bg: linear-gradient(135deg, #f8c9c8 0%, #d87175 100%);
+  --btn-rose-text: #100d14;
+
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
   --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.35);
   --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.45);
@@ -121,6 +139,24 @@
   --glow-gold: 0 0 35px rgba(158, 99, 22, 0.15);
   --glow-rose: 0 0 35px rgba(166, 63, 71, 0.15);
   --glow-emerald: 0 0 35px rgba(28, 99, 71, 0.15);
+
+  /* --- BUTTON TOKENS (Ethereal Dawn Light Luxury) --- */
+  --btn-primary-bg: linear-gradient(135deg, #b87518 0%, #8f4f06 100%);
+  --btn-primary-hover-bg: linear-gradient(135deg, #cb831e 0%, #9e5b0c 100%);
+  --btn-primary-text: #ffffff;
+  --btn-primary-shadow: 0 4px 18px rgba(143, 79, 6, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.25);
+  --btn-primary-hover-shadow: 0 8px 26px rgba(143, 79, 6, 0.45);
+
+  --btn-secondary-bg: #ffffff;
+  --btn-secondary-border: #d8c7b4;
+  --btn-secondary-text: #2c2234;
+  --btn-secondary-hover-bg: #f8f1e6;
+  --btn-secondary-hover-border: #b87518;
+  --btn-secondary-hover-text: #8f4f06;
+
+  --btn-rose-bg: linear-gradient(135deg, #b33946 0%, #8a1f2c 100%);
+  --btn-rose-hover-bg: linear-gradient(135deg, #c74856 0%, #9c2734 100%);
+  --btn-rose-text: #ffffff;
 
   --shadow-sm: 0 2px 8px rgba(60, 40, 20, 0.06);
   --shadow-md: 0 8px 24px rgba(60, 40, 20, 0.09);

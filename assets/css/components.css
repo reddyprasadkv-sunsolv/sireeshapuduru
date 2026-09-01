@@ -38,44 +38,48 @@
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-gold-dark) 100%);
-  color: #120e16;
-  box-shadow: 0 4px 20px var(--accent-gold-glow);
+  background: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
+  box-shadow: var(--btn-primary-shadow);
+  border-color: transparent;
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, var(--accent-gold-light) 0%, var(--accent-gold) 100%);
-  box-shadow: 0 8px 28px rgba(226, 178, 112, 0.45);
+  background: var(--btn-primary-hover-bg);
+  color: var(--btn-primary-text);
+  box-shadow: var(--btn-primary-hover-shadow);
   transform: translateY(-2px);
-  color: #0b0d13;
 }
 
 .btn-secondary {
-  background: var(--bg-glass);
-  border-color: var(--border-medium);
-  color: var(--text-primary);
+  background: var(--btn-secondary-bg);
+  border-color: var(--btn-secondary-border);
+  color: var(--btn-secondary-text);
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .btn-secondary:hover {
-  background: var(--bg-card-hover);
-  border-color: var(--accent-gold);
-  color: var(--accent-gold-light);
+  background: var(--btn-secondary-hover-bg);
+  border-color: var(--btn-secondary-hover-border);
+  color: var(--btn-secondary-hover-text);
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }
 
 .btn-rose {
-  background: linear-gradient(135deg, var(--accent-rose) 0%, var(--accent-rose-dark) 100%);
-  color: #ffffff;
+  background: var(--btn-rose-bg);
+  color: var(--btn-rose-text);
   box-shadow: 0 4px 20px var(--accent-rose-glow);
+  border-color: transparent;
 }
 
 .btn-rose:hover {
-  background: linear-gradient(135deg, var(--accent-rose-light) 0%, var(--accent-rose) 100%);
-  box-shadow: 0 8px 28px rgba(230, 157, 156, 0.4);
+  background: var(--btn-rose-hover-bg);
+  color: var(--btn-rose-text);
+  box-shadow: 0 8px 28px rgba(184, 60, 72, 0.4);
   transform: translateY(-2px);
-  color: #120e16;
 }
 
 .btn-whatsapp {
@@ -1615,11 +1619,11 @@ textarea.form-control {
 }
 
 .event-tab-btn.active {
-  background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-gold-dark) 100%);
-  color: #120e16;
+  background: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
   border-color: transparent;
   font-weight: 700;
-  box-shadow: 0 4px 20px var(--accent-gold-glow);
+  box-shadow: var(--btn-primary-shadow);
 }
 
 .events-grid {
