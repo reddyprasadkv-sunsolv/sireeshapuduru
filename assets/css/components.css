@@ -1638,12 +1638,13 @@ textarea.form-control {
   flex-direction: column;
   height: 100%;
   position: relative;
-  transition: all var(--transition-normal);
+  transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
   box-shadow: var(--shadow-sm);
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .event-card:hover {
-  transform: translateY(-8px);
   border-color: var(--accent-gold);
   box-shadow: var(--shadow-xl);
 }

@@ -310,3 +310,19 @@ window.handleEventRegistrationSubmit = function(e) {
     </div>
   `;
 };
+
+/**
+ * Global helper for inquiring about next edition of past events
+ */
+window.openInquiryForEvent = function(eventTitle) {
+  const discoveryBtn = document.querySelector('[data-modal-target="discovery"]');
+  if (discoveryBtn) {
+    discoveryBtn.click();
+    setTimeout(() => {
+      const detailsField = document.querySelector('#discoveryForm textarea') || document.querySelector('textarea');
+      if (detailsField) {
+        detailsField.value = `I am interested in attending the next edition of "${eventTitle}". Please let me know when upcoming dates are announced.`;
+      }
+    }, 150);
+  }
+};

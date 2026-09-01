@@ -21,10 +21,16 @@
   <link rel="stylesheet" href="../assets/css/components.css">
 
   <style>
+    html {
+      scrollbar-gutter: stable;
+      overflow-y: scroll;
+    }
+
     body {
       background: var(--bg-primary);
       min-height: 100vh;
       color: var(--text-primary);
+      overflow-x: hidden;
     }
 
     /* Auth Gate Card */
@@ -77,7 +83,7 @@
       color: var(--text-primary);
       font-family: var(--font-sans);
       font-size: 0.95rem;
-      transition: all var(--transition-fast);
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
       outline: none;
     }
 
@@ -86,16 +92,28 @@
       box-shadow: 0 0 0 3px var(--accent-gold-glow);
     }
 
+    /* Sticky Admin Navbar */
+    .admin-sticky-nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border-medium);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      width: 100%;
+    }
+
     /* Admin Dashboard View */
     .admin-dashboard {
       display: none;
-      padding-top: 100px;
+      padding-top: 2rem;
       padding-bottom: 5rem;
     }
 
     .admin-dashboard.unlocked {
       display: block;
-      animation: fadeIn 0.4s ease;
+      animation: fadeIn 0.3s ease;
     }
 
     .admin-header-bar {
@@ -153,7 +171,7 @@
 
     .admin-view-panel.active {
       display: block;
-      animation: fadeIn 0.3s ease;
+      animation: fadeIn 0.25s ease;
     }
 
     .kpi-grid {
@@ -237,7 +255,8 @@
     .filter-btn:hover, .filter-btn.active {
       background: var(--accent-gold-glow);
       border-color: var(--accent-gold);
-      color: var(--accent-gold-light);
+      color: var(--accent-gold);
+      font-weight: 600;
     }
 
     /* Data Table */
@@ -369,12 +388,14 @@
       display: flex;
       flex-direction: column;
       box-shadow: var(--shadow-sm);
-      transition: all var(--transition-normal);
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+      transform: translateZ(0);
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
     }
 
     .admin-event-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-lg);
+      box-shadow: var(--shadow-md);
       border-color: var(--accent-gold);
     }
 
@@ -460,18 +481,18 @@
        ========================================================================== -->
   <div class="admin-dashboard" id="adminDashboard">
     
-    <!-- Fixed Top Admin Header -->
-    <header class="navbar-wrapper" style="background: var(--bg-secondary); border-bottom: 1px solid var(--border-medium);">
-      <div class="nav-container">
-        <div class="brand-logo">
+    <!-- Sticky Top Admin Header -->
+    <header class="admin-sticky-nav">
+      <div class="nav-container" style="max-width: 1240px; margin: 0 auto; padding: 0.75rem 1.5rem; display: flex; align-items: center; justify-content: space-between;">
+        <div class="brand-logo" style="display: flex; align-items: center; gap: 12px;">
           <img src="../assets/images/logo.png" alt="Logo" width="40" height="40">
           <div class="brand-text">
-            <span class="brand-name">Sireesha Puduru</span>
-            <span class="brand-tagline">Admin Sanctuary Desk</span>
+            <span class="brand-name" style="font-weight: 700; font-size: 1.05rem; display: block; color: var(--text-primary);">Sireesha Puduru</span>
+            <span class="brand-tagline" style="font-size: 0.75rem; color: var(--accent-gold); letter-spacing: 0.05em;">Admin Sanctuary Desk</span>
           </div>
         </div>
 
-        <div class="nav-actions">
+        <div class="nav-actions" style="display: flex; align-items: center; gap: 10px;">
           <button type="button" class="btn btn-secondary btn-sm" id="adminThemeToggleBtn" onclick="window.adminPortal.toggleTheme()" title="Switch Ambiance Theme Mode">
             ☀️ Ethereal Dawn Mode
           </button>
@@ -488,7 +509,7 @@
       </div>
     </header>
 
-    <div class="container" style="max-width: 1240px;">
+    <div class="container" style="max-width: 1240px; padding-top: 1rem;">
       
       <!-- View Navigation Tabs -->
       <div class="admin-nav-tabs">
