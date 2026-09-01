@@ -110,14 +110,17 @@
   z-index: 998;
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
   color: #ffffff;
-  padding: 10px 18px 10px 14px;
+  padding: 12px 20px 12px 16px;
   border-radius: var(--radius-full);
   box-shadow: 0 6px 24px rgba(37, 211, 102, 0.45), 0 2px 8px rgba(0, 0, 0, 0.25);
   text-decoration: none;
   font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
   transition: all var(--transition-normal);
   animation: whatsappPulse 3s infinite ease-in-out;
 }
@@ -130,30 +133,10 @@
 }
 
 .floating-whatsapp svg {
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
   fill: currentColor;
   flex-shrink: 0;
-}
-
-.floating-whatsapp-content {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.2;
-}
-
-.floating-whatsapp-label {
-  font-size: 0.68rem;
-  opacity: 0.9;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-.floating-whatsapp-number {
-  font-size: 0.9rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
 }
 
 /* Header Navbar WhatsApp Link */
