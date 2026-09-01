@@ -161,7 +161,7 @@ section {
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-gold-light) 60%, var(--accent-rose) 100%);
+  background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-rose) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;

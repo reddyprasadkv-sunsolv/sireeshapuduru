@@ -509,14 +509,14 @@
   right: 0;
   background: linear-gradient(0deg, rgba(11, 13, 19, 0.96) 0%, rgba(11, 13, 19, 0.7) 70%, transparent 100%);
   padding: 2.25rem 2rem;
-  color: var(--text-primary);
+  color: #ffffff;
 }
 
 .quote-highlight {
   font-family: var(--font-serif);
   font-size: 1.4rem;
   font-style: italic;
-  color: var(--accent-gold-light);
+  color: #f5d49f;
   line-height: 1.4;
 }
 
@@ -704,7 +704,7 @@
 }
 
 .card-back {
-  background: linear-gradient(135deg, #181c2b 0%, #111420 100%);
+  background: linear-gradient(135deg, var(--bg-card-hover) 0%, var(--bg-secondary) 100%);
   transform: rotateY(180deg);
   border-color: var(--accent-gold);
   box-shadow: 0 0 35px var(--accent-gold-glow);
@@ -773,9 +773,9 @@
 
 .program-card.featured {
   border-color: var(--accent-gold);
-  box-shadow: 0 0 35px var(--accent-gold-glow);
+  box-shadow: 0 10px 40px var(--accent-gold-glow);
   z-index: 2;
-  background: linear-gradient(180deg, rgba(22, 27, 42, 0.98) 0%, rgba(30, 37, 58, 0.98) 100%);
+  background: var(--bg-card);
 }
 
 .program-card:hover {
@@ -786,21 +786,22 @@
 
 .program-badge {
   align-self: flex-start;
-  padding: 4px 14px;
+  padding: 6px 16px;
   border-radius: var(--radius-full);
-  font-size: 0.76rem;
-  font-weight: 600;
+  font-size: 0.78rem;
+  font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   margin-bottom: var(--space-md);
   background: var(--accent-gold-glow);
-  color: var(--accent-gold-light);
-  border: 1px solid var(--border-subtle);
+  color: var(--accent-gold);
+  border: 1px solid var(--border-medium);
 }
 
 .program-card.featured .program-badge {
-  background: var(--accent-gold);
+  background: linear-gradient(135deg, #d49a46 0%, #b87d2a 100%);
   color: #120e16;
+  border: 1px solid rgba(184, 125, 42, 0.4);
 }
 
 .program-title {
@@ -810,12 +811,13 @@
   min-height: 3.8rem;
   display: flex;
   align-items: flex-start;
+  color: var(--text-primary);
 }
 
 .program-type {
-  font-size: 0.88rem;
-  color: var(--accent-rose-light);
-  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--accent-rose);
+  font-weight: 700;
   margin-bottom: var(--space-md);
   min-height: 1.5rem;
 }
@@ -829,11 +831,11 @@
 }
 
 .program-perfect-for {
-  background: var(--bg-glass);
+  background: var(--bg-secondary);
   border-left: 3px solid var(--accent-gold);
-  padding: 12px 14px;
+  padding: 14px 16px;
   border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-  font-size: 0.86rem;
+  font-size: 0.88rem;
   color: var(--text-secondary);
   margin-bottom: var(--space-lg);
   min-height: 4.8rem;
@@ -852,8 +854,8 @@
 }
 
 .program-highlights li {
-  font-size: 0.9rem;
-  color: var(--text-secondary);
+  font-size: 0.92rem;
+  color: var(--text-primary);
   display: flex;
   align-items: flex-start;
   gap: 10px;
@@ -994,7 +996,7 @@
 
 /* --- FREE MEDITATION & AUDIO PLAYER --- */
 .meditation-gift-box {
-  background: linear-gradient(135deg, rgba(22, 27, 42, 0.98) 0%, rgba(30, 37, 58, 0.98) 100%);
+  background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-secondary) 100%);
   border: 1px solid var(--accent-gold);
   border-radius: var(--radius-xl);
   padding: var(--space-3xl);
@@ -1002,15 +1004,15 @@
   grid-template-columns: 1.1fr 0.9fr;
   gap: var(--space-3xl);
   align-items: center;
-  box-shadow: 0 0 45px var(--accent-gold-glow);
+  box-shadow: var(--shadow-xl);
 }
 
 .player-card {
-  background: var(--bg-glass-heavy);
+  background: var(--bg-card);
   border: 1px solid var(--border-medium);
   border-radius: var(--radius-lg);
   padding: 1.85rem;
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-md);
   display: flex;
   flex-direction: column;
   justify-content: center;
