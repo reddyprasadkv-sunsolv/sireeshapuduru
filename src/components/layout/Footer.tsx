@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { getAssetPath } from '@/utils/assets';
 
 export const Footer: React.FC = () => {
   return (
@@ -10,7 +11,7 @@ export const Footer: React.FC = () => {
         <div className="footer-grid">
           <div className="footer-col brand-col">
             <div className="footer-logo">
-              <img src="assets/images/logo.png" alt="Sireesha Puduru Emblem" width="48" height="48" />
+              <img src={getAssetPath('assets/images/logo.png')} alt="Sireesha Puduru Emblem" width="48" height="48" />
               <div>
                 <span className="footer-brand-title">Sireesha Puduru</span>
                 <span className="footer-brand-sub">The Art of Loving Academy</span>

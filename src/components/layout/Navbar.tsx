@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useTheme } from '@/context/ThemeContext';
 import { useAudio } from '@/hooks/useAudio';
+import { getAssetPath } from '@/utils/assets';
 
 interface NavbarProps {
   onOpenDiscovery?: () => void;
@@ -28,7 +29,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDiscovery }) => {
       <header className={`navbar-wrapper ${isScrolled ? 'scrolled' : ''}`}>
         <div className="nav-container">
           <Link href="/" className="brand-logo" aria-label="Sireesha Puduru Home">
-            <img src="assets/images/logo.png" alt="Sireesha Puduru Emblem" width="44" height="44" />
+            <img src={getAssetPath('assets/images/logo.png')} alt="Sireesha Puduru Emblem" width="44" height="44" />
             <div className="brand-text">
               <span className="brand-name">Sireesha Puduru</span>
               <span className="brand-tagline">The Art of Loving Academy</span>

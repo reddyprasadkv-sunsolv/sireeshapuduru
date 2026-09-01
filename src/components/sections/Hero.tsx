@@ -1,9 +1,10 @@
 'use client';
 
 import React from 'react';
+import { getAssetPath } from '@/utils/assets';
 
 interface HeroProps {
-  onOpenDiscovery: () => void;
+  onOpenDiscovery?: () => void;
 }
 
 export const Hero: React.FC<HeroProps> = ({ onOpenDiscovery }) => {
@@ -68,7 +69,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDiscovery }) => {
         <div className="hero-visual">
           <div className="hero-image-wrapper">
             <img
-              src="assets/images/sireesha-portrait.jpg"
+              src={getAssetPath('assets/images/sireesha-portrait.jpg')}
               alt="Sireesha Puduru Spiritual Life Coach & Healer"
             />
           </div>

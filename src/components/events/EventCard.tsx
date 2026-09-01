@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Event } from '@/types';
+import { getAssetPath } from '@/utils/assets';
 
 interface EventCardProps {
   event: Event;
@@ -34,7 +35,7 @@ export const EventCard: React.FC<EventCardProps> = ({ event, onRegister, onInqui
     <article className={`event-card ${event.featured ? 'featured-event' : ''} ${!isUpcoming ? 'past-event-card' : ''}`}>
       <div className="event-banner-wrap">
         <img
-          src={event.banner || 'assets/images/sanctuary.png'}
+          src={getAssetPath(event.banner || 'assets/images/sanctuary.png')}
           alt={event.title}
           className="event-banner-img"
           loading="lazy"

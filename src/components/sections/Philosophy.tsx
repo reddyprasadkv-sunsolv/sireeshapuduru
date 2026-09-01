@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { getAssetPath } from '@/utils/assets';
 
 export const Philosophy: React.FC = () => {
   return (
@@ -22,7 +23,7 @@ export const Philosophy: React.FC = () => {
         <div className="pillars-grid">
           <div className="pillar-card">
             <div className="pillar-img-thumb">
-              <img src="assets/images/self-love.png" alt="Sacred Mirror Work Louise Hay" />
+              <img src={getAssetPath('assets/images/self-love.png')} alt="Sacred Mirror Work Louise Hay" />
             </div>
             <h3 className="pillar-title">01. Sacred Mirror Work</h3>
             <p>
@@ -35,7 +36,7 @@ export const Philosophy: React.FC = () => {
 
           <div className="pillar-card">
             <div className="pillar-img-thumb">
-              <img src="assets/images/meditation.png" alt="Forgiveness Emotional Freedom" />
+              <img src={getAssetPath('assets/images/meditation.png')} alt="Forgiveness Emotional Freedom" />
             </div>
             <h3 className="pillar-title">02. Forgiveness as Freedom</h3>
             <p>
@@ -48,7 +49,7 @@ export const Philosophy: React.FC = () => {
 
           <div className="pillar-card">
             <div className="pillar-img-thumb">
-              <img src="assets/images/sanctuary.png" alt="Inner Child Integration Reparenting" />
+              <img src={getAssetPath('assets/images/sanctuary.png')} alt="Inner Child Integration Reparenting" />
             </div>
             <h3 className="pillar-title">03. Inner Child Integration</h3>
             <p>
@@ -61,7 +62,7 @@ export const Philosophy: React.FC = () => {
 
           <div className="pillar-card">
             <div className="pillar-img-thumb">
-              <img src="assets/images/connect.png" alt="Subconscious Rewiring Affirmations" />
+              <img src={getAssetPath('assets/images/connect.png')} alt="Subconscious Rewiring Affirmations" />
             </div>
             <h3 className="pillar-title">04. Subconscious Rewiring</h3>
             <p>

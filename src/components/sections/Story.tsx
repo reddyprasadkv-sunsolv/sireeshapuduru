@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { getAssetPath } from '@/utils/assets';
 
 export const Story: React.FC = () => {
   return (
@@ -8,7 +9,7 @@ export const Story: React.FC = () => {
       <div className="container story-grid">
         <div className="story-image-box">
           <div className="story-image-card">
-            <img src="assets/images/sanctuary.png" alt="Sireesha Puduru Teaching Sanctuary Workshop" />
+            <img src={getAssetPath('assets/images/sanctuary.png')} alt="Sireesha Puduru Teaching Sanctuary Workshop" />
             <div className="story-quote-overlay">
               <p className="quote-highlight">"The moment you choose to love yourself, miracles start to flood your life."</p>
               <div style={{ fontSize: '0.85rem', color: '#ffffff', opacity: 0.9, marginTop: '4px' }}>— Sireesha Puduru</div>
