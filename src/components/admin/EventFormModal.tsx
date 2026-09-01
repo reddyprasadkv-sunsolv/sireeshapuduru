@@ -128,7 +128,9 @@ export const EventFormModal: React.FC<EventFormModalProps> = ({ isOpen, event, o
             />
             <div style={{ display: 'flex', gap: '8px', alignItems: 'center', marginTop: '8px', flexWrap: 'wrap' }}>
               <small style={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>Quick presets:</small>
-              <button type="button" className="preset-chip" onClick={() => setFormData({ ...formData, banner: 'assets/images/sanctuary.png' })}>Sanctuary Hall</button>
+              <button type="button" className="preset-chip" onClick={() => setFormData({ ...formData, banner: 'assets/images/workshop-1.png' })}>Retreat Hall (WS 1)</button>
+              <button type="button" className="preset-chip" onClick={() => setFormData({ ...formData, banner: 'assets/images/workshop-2.png' })}>Mirror Work (WS 2)</button>
+              <button type="button" className="preset-chip" onClick={() => setFormData({ ...formData, banner: 'assets/images/sanctuary.png' })}>Sanctuary</button>
               <button type="button" className="preset-chip" onClick={() => setFormData({ ...formData, banner: 'assets/images/meditation.png' })}>Meditation</button>
               <button type="button" className="preset-chip" onClick={() => setFormData({ ...formData, banner: 'assets/images/self-love.png' })}>Self-Love</button>
               <button type="button" className="preset-chip" onClick={() => setFormData({ ...formData, banner: 'assets/images/connect.png' })}>Connect Circle</button>
