@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Cormorant_Garamond, Plus_Jakarta_Sans, Playfair_Display } from 'next/font/google';
 import '@/styles/globals.css';
 import { ThemeProvider } from '@/context/ThemeContext';
+import { ClientProtectionGuard } from '@/components/security/ClientProtectionGuard';
 
 const cormorantGaramond = Cormorant_Garamond({
   subsets: ['latin'],
@@ -50,6 +51,7 @@ export default function RootLayout({
     <html lang="en" data-theme="dawn" className={`${cormorantGaramond.variable} ${plusJakartaSans.variable} ${playfairDisplay.variable}`}>
       <body>
         <ThemeProvider>
+          <ClientProtectionGuard />
           {children}
         </ThemeProvider>
       </body>
