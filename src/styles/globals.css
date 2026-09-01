@@ -1,0 +1,16 @@
+@import './variables.css';
+@import './animations.css';
+@import './main.css';
+@import './components.css';
+
+/* Next.js Specific Resets & Utilities */
+html {
+  scrollbar-gutter: stable;
+  overflow-y: scroll;
+}
+
+body {
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
