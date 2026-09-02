@@ -457,29 +457,49 @@ section {
   color: var(--text-muted);
 }
 
-.social-links {
+.social-links,
+.footer-social-links {
   display: flex;
   align-items: center;
   gap: 12px;
+  margin-top: 1.25rem;
 }
 
-.social-icon {
-  width: 36px;
-  height: 36px;
+.social-icon,
+.social-icon-btn {
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   background: var(--bg-glass);
-  border: 1px solid var(--border-subtle);
-  display: flex;
+  border: 1px solid var(--border-medium);
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   color: var(--text-secondary);
   transition: all var(--transition-fast);
+  text-decoration: none;
+  cursor: pointer;
 }
 
-.social-icon:hover {
+.social-icon svg,
+.social-icon-btn svg {
+  width: 18px;
+  height: 18px;
+  transition: transform var(--transition-fast);
+}
+
+.social-icon:hover,
+.social-icon-btn:hover {
   color: var(--accent-gold);
   border-color: var(--accent-gold);
+  background: var(--accent-gold-glow);
   transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--accent-gold-glow);
+}
+
+.social-icon:hover svg,
+.social-icon-btn:hover svg {
+  transform: scale(1.1);
 }
 
 /* --- RESPONSIVE BREAKPOINTS --- */
