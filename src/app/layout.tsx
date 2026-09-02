@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Cormorant_Garamond, Plus_Jakarta_Sans, Playfair_Display } from 'next/font/google';
+import { Cormorant_Garamond, Geist, Playfair_Display } from 'next/font/google';
 import '@/styles/globals.css';
 import { ThemeProvider } from '@/context/ThemeContext';
 import { ClientProtectionGuard } from '@/components/security/ClientProtectionGuard';
@@ -11,9 +11,8 @@ const cormorantGaramond = Cormorant_Garamond({
   display: 'swap',
 });
 
-const plusJakartaSans = Plus_Jakarta_Sans({
+const geist = Geist({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700', '800'],
   variable: '--font-sans',
   display: 'swap',
 });
@@ -48,7 +47,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" data-theme="dawn" className={`${cormorantGaramond.variable} ${plusJakartaSans.variable} ${playfairDisplay.variable}`}>
+    <html lang="en" data-theme="dawn" className={`${cormorantGaramond.variable} ${geist.variable} ${playfairDisplay.variable}`}>
       <body>
         <ThemeProvider>
           <ClientProtectionGuard />

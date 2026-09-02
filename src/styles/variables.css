@@ -6,7 +6,7 @@
 :root {
   /* --- TYPOGRAPHY --- */
   --font-serif: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
-  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-sans: 'Geist', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-accent: 'Playfair Display', Georgia, serif;
 
   /* --- SACRED TWILIGHT PALETTE (Default Dark Luxury Mode) --- */
